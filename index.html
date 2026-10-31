@@ -39,6 +39,22 @@ button{font:inherit;color:inherit;cursor:pointer}
 .card .eyebrow{font:600 11px/1 var(--sans);letter-spacing:.26em;color:var(--sage)}
 .card h2{font:500 clamp(30px,4.6vw,44px)/1.05 var(--serif);margin:14px 0 12px}
 .card p{margin:0;font-size:15px;line-height:1.7;color:#46564a}
+.viewBtn{pointer-events:auto;background:var(--ink);color:#fff;border:0;border-radius:30px;padding:11px 20px;font:600 12px var(--sans);letter-spacing:.12em;transition:background .2s}
+.viewBtn:hover{background:#3b5a46}
+
+#showcase{position:fixed;inset:0;z-index:5;pointer-events:none}
+.show{position:absolute;inset:0;opacity:0;visibility:hidden}
+.tile{position:absolute;background:#fff;padding:6px;box-shadow:0 16px 40px #1c2c2040;will-change:transform,opacity;opacity:0}
+.tile img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:#e6e0d2}
+.t0{left:4vw;top:14vh;width:min(24vw,340px)}
+.t1{right:7vw;top:12vh;width:min(20vw,290px)}
+.t2{left:9vw;bottom:14vh;width:min(20vw,290px)}
+.t3{right:4vw;bottom:15vh;width:min(24vw,340px)}
+.showCenter{position:absolute;left:50%;top:46%;width:min(86vw,380px);transform:translate(-50%,-50%);text-align:center;padding:24px 26px 20px;background:rgba(248,245,236,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 18px 50px #1c2c2038;pointer-events:none}
+.showCenter .eyebrow{font:700 11px/1 var(--sans);letter-spacing:.26em;color:var(--sage)}
+.showCenter h2{font:600 clamp(26px,3.2vw,34px)/1.08 var(--serif);margin:12px 0 18px;color:#14261b}
+.showCenter .viewBtn{margin:0;font-size:13px;padding:13px 26px}
+.showCenter .skip{margin-top:12px;font:11px var(--sans);letter-spacing:.08em;color:#5d6a60}
 
 #dots{position:fixed;right:max(14px,2.2vw);top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:18px}
 #dots button{position:relative;width:14px;height:14px;padding:0;border-radius:50%;border:1.5px solid #fff;background:#24372c66;transition:background .3s,transform .3s}
@@ -65,12 +81,41 @@ button{font:inherit;color:inherit;cursor:pointer}
 #indexList .name{display:block;font:500 28px/1.1 var(--serif);margin:14px 0 10px}
 #indexList .desc{display:block;font-size:14px;line-height:1.65;color:#5d6a60}
 
+#project{position:fixed;inset:0;z-index:35;background:#f2ede2;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s}
+#project.open{opacity:1;visibility:visible}
+#projectClose{position:fixed;top:20px;right:max(20px,4vw);z-index:36;background:var(--ink);color:#fff;border:0;border-radius:30px;padding:10px 18px;font:600 12px var(--sans);letter-spacing:.14em}
+.pHero{width:100%;height:min(54vh,500px);background:#e9e3d6;overflow:hidden}
+.pHero img{width:100%;height:100%;display:block;object-fit:cover}
+.pHero.contain{background:#fff}
+.pHero.contain img{object-fit:contain}
+.pWrap{max-width:1080px;margin:0 auto;padding:42px max(24px,5vw) 90px}
+.pWrap .eyebrow{font:700 11px var(--sans);letter-spacing:.3em;color:var(--sage)}
+.pWrap h1{font:500 clamp(38px,6vw,68px)/1.02 var(--serif);margin:14px 0 22px;color:#14261b}
+.pMeta{display:flex;flex-wrap:wrap;gap:10px 34px;margin:0 0 28px;padding:16px 0;border-top:1px solid #24372c22;border-bottom:1px solid #24372c22}
+.pMeta div{font:12px/1.4 var(--sans);color:#4c5d50}
+.pMeta b{display:block;font:700 10px var(--sans);letter-spacing:.22em;color:var(--sage);margin-bottom:4px}
+.pLead{max-width:720px;font-size:clamp(17px,2vw,20px);line-height:1.7;color:#2b4132;margin:0 0 34px}
+.pCols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px 40px;margin-bottom:44px}
+.pCols h3{font:500 28px/1.1 var(--serif);margin:0 0 12px;color:#14261b}
+.pCols ul{margin:0;padding-left:20px;font-size:15px;line-height:1.7;color:#3e4f43}
+.pCols li{margin-bottom:6px}
+.pWrap h2{font:500 clamp(30px,4vw,44px)/1.05 var(--serif);margin:0 0 20px;color:#14261b}
+.pGallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
+.pGallery figure{margin:0}
+.pGallery img{display:block;width:100%;height:auto;background:#fff;box-shadow:0 10px 30px #3b332018;cursor:zoom-in;transition:transform .25s}
+.pGallery img:hover{transform:translateY(-3px)}
+.pGallery figcaption{font:13px/1.5 var(--sans);color:#5d6a60;margin-top:10px}
+#lightbox{position:fixed;inset:0;z-index:50;background:rgba(18,28,22,.93);display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+#lightbox.open{display:flex}
+#lightbox img{max-width:94vw;max-height:84vh;object-fit:contain;background:#fff}
+#lightbox p{color:#fff;font:14px/1.5 var(--sans);margin:14px 0 0;text-align:center;max-width:760px}
+
 #loader{position:fixed;inset:0;z-index:40;background:#e4efe0;display:flex;align-items:center;justify-content:center;font:600 11px var(--sans);letter-spacing:.3em;color:var(--ink);transition:opacity .9s,visibility .9s}
 #loader.done{opacity:0;visibility:hidden}
 
 #errbox{display:none;position:fixed;top:0;left:0;right:0;z-index:99;margin:0;padding:12px 16px;background:#fff;color:#b00020;font:12px/1.5 monospace;white-space:pre-wrap;border-bottom:2px solid #b00020}
 
-body.no3d #scene,body.no3d #vignette,body.no3d #intro,body.no3d #cards,body.no3d #dots,body.no3d #hint,body.no3d #restart,body.no3d #progress,body.no3d #indexBtn,body.no3d #indexClose{display:none}
+body.no3d #scene,body.no3d #vignette,body.no3d #intro,body.no3d #cards,body.no3d #showcase,body.no3d #dots,body.no3d #hint,body.no3d #restart,body.no3d #progress,body.no3d #indexBtn,body.no3d #indexClose{display:none}
 body.no3d #indexNote{display:block}
 
 @media(max-width:700px){
@@ -81,6 +126,12 @@ body.no3d #indexNote{display:block}
 #intro::before{inset:-34px -18px;border-radius:32px}
 #cards{bottom:max(76px,10vh)}
 .card{padding:20px 20px 22px}
+.pHero{height:34vh}
+.t0{left:3vw;top:11vh;width:38vw}
+.t1{right:9vw;top:17vh;width:33vw}
+.t2{left:6vw;bottom:12vh;width:33vw}
+.t3{right:8vw;bottom:9vh;width:38vw}
+.showCenter{top:48%;padding:20px 20px 16px}
 #dots{right:8px;gap:16px}
 #dots button::after{display:none}
 }
@@ -113,6 +164,7 @@ window.addEventListener('unhandledrejection',function(e){window.__err('Error: '+
 <div class="cue">SCROLL TO WALK<i></i></div>
 </div>
 
+<div id="showcase"></div>
 <div id="cards"></div>
 <nav id="dots" aria-label="Stops along the path"></nav>
 <div id="hint">Scroll, swipe or use the ↑ ↓ keys to walk</div>
@@ -127,16 +179,70 @@ window.addEventListener('unhandledrejection',function(e){window.__err('Error: '+
 <div id="indexList"></div>
 </section>
 
+<section id="project" aria-label="Project details">
+<button id="projectClose">CLOSE ✕</button>
+<div id="projectBody"></div>
+</section>
+<div id="lightbox"><img alt=""><p></p></div>
+
 <div id="loader">PREPARING THE PARK…</div>
 <noscript><p style="position:fixed;z-index:50;top:40%;left:0;right:0;text-align:center;font:16px Georgia,serif;color:#24372c">Please enable JavaScript to walk through the portfolio.</p></noscript>
 
 <script type="module">
 /* ================= EDIT YOUR CONTENT HERE =================
    t = how far along the path (0 = start, 1 = end).
-   Keep the stops roughly 0.2 apart so they don't overlap. */
+   Keep the stops roughly 0.2 apart so they don't overlap.
+   A stop with a "project" shows photo tiles + a "View project" button
+   (keep scrolling to skip past it). Add style:'post' to a project and its
+   photos hang from a lamp post in the park, then fly in to the screen. */
 const STOPS=[
-{t:.14,eyebrow:'01 — RESIDENTIAL',title:'Homes with a sense of ease',text:'Residential interiors shaped by daylight, honest materials and the quiet comfort of the outdoors. Projects will be added here soon.'},
-{t:.38,eyebrow:'02 — COMMERCIAL',title:'Spaces that welcome people',text:'Commercial environments designed to feel considered, calm and unmistakably human. Details coming soon.'},
+{t:.14,eyebrow:'01 — LIVE/WORK PLAN',title:'A home with a studio built in',
+text:'Space planning for a pottery artist who lives and works at home: bubble diagrams, furniture planning and the final furniture plan.',
+project:{
+tiles:['images/tile-plan-furniture-plan.jpg','images/tile-plan-bubble-v2.jpg','images/tile-plan-furniture-planning.jpg','images/tile-plan-bubble-v1.jpg'],
+hero:'images/plan-furniture-plan.jpg',heroFit:'contain',
+meta:[['PROJECT','Project 2'],['COURSE','INDE1009 — Interior Design Studio 1'],['SCHOOL','Georgian College'],['DATE','October 2025']],
+lead:'A live/work condo plan for a pottery artist who wants to make, show and share her work at home. The layout keeps the studio and the living spaces separate but connected, with daylight and views to nature in the places she uses most.',
+sections:[
+{h:'The brief',items:['A pottery artist who makes vases and plant pots','Prefers organic shapes and natural textures','Wants a warm, open, airy home with a dedicated pottery studio']},
+{h:'Planning moves',items:['A public → semi-private → private sequence from the foyer','Dining next to the kitchen; ensuite inside the bedroom','Balcony access from the bedroom and the workspace','Frequently used rooms placed near windows for daylight']},
+{h:'The final plan',items:['Open floor plan for circulation','Split-level work area for separation','Dual-access ensuite for convenience','Floating and arched shelving for display','Custom built-ins for organized storage']}
+],
+gallery:[
+{src:'images/plan-furniture-plan.jpg',cap:'Furniture plan, ¼″ = 1′-0″'},
+{src:'images/plan-furniture-planning.jpg',cap:'Furniture planning with colour-coded pieces'},
+{src:'images/plan-bubble-v2.jpg',cap:'Bubble diagram, version 2'},
+{src:'images/plan-bubble-v1.jpg',cap:'Bubble diagram, version 1'}
+]}},
+{t:.38,eyebrow:'02 — LIVE-WORK CONDO',title:'Leaves & Layers: a biophilic live-work condo',
+text:'The final design for the pottery artist’s condo: a living plant wall, arched shelving for her work, and a studio full of daylight.',
+project:{
+style:'post',
+tiles:['images/tile-condo-model.jpg','images/tile-condo-living-room.jpg','images/tile-condo-moodboard.jpg','images/tile-condo-materials.jpg'],
+hero:'images/condo-model.jpg',heroPos:'50% 58%',
+meta:[['PROJECT','Project 4 — Final design'],['COURSE','INDE1009 — Interior Design Studio 1'],['SCHOOL','Georgian College'],['DATE','December 2025']],
+lead:'The final design for a live-work condo for a pottery artist, built around nature and light. A living plant wall anchors the living room, arched and floating shelves show off her pottery, and the plan follows two WELL Building Standard features: Enhanced Access to Nature and Visual Balance.',
+sections:[
+{h:'The client',items:['Pottery artist; wants to showcase her work subtly at home','Loves time in nature and home-cooked Indian meals','Prefers small, intimate gatherings','Wants a warm, cozy, inviting, functional and open space']},
+{h:'Look and feel',items:['Neutral base with warm wood tones','Soft terracotta and green accents','Modern clean lines mixed with organic shapes','Earthy, textured decor and accessories']},
+{h:'Design highlights',items:['Living plant wall with built-in lighting as the focal point','Arched, recessed shelving and floating shelves for plants and pottery','Split-level pottery studio with a sink and clay trap, storage and natural light','Black walnut kitchen cabinets, quartz countertop and tile backsplash','Philips Hue smart lighting in separate zones, tuned for comfort and circadian rhythm','Triple-glazed low-E windows, Roman shades, low-VOC finishes and energy-efficient appliances']}
+],
+gallery:[
+{src:'images/condo-model.jpg',cap:'Scale model of the condo'},
+{src:'images/condo-moodboard.jpg',cap:'Mood board'},
+{src:'images/condo-floorplan.jpg',cap:'Floor plan'},
+{src:'images/condo-elevation-west.jpg',cap:'West elevation: foyer, living room and pottery studio'},
+{src:'images/condo-elevation-south.jpg',cap:'South elevation: kitchen, living room plant wall and bedroom'},
+{src:'images/condo-living-room.jpg',cap:'Living room design'},
+{src:'images/condo-artistic-display.jpg',cap:'Artistic display: arched and floating shelving'},
+{src:'images/condo-kitchen.jpg',cap:'Kitchen design'},
+{src:'images/condo-furniture.jpg',cap:'Furniture selections'},
+{src:'images/condo-materials.jpg',cap:'Materials and finishes'},
+{src:'images/condo-nature-indoors.jpg',cap:'Bringing nature indoors'},
+{src:'images/condo-natural-light.jpg',cap:'Natural light strategy'},
+{src:'images/condo-lighting-plan.jpg',cap:'Lighting plan'},
+{src:'images/condo-sustainability.jpg',cap:'Designing with sustainability'}
+]}},
 {t:.63,eyebrow:'03 — PHILOSOPHY',title:'Biophilic by instinct',text:'Why natural light, texture and greenery sit at the heart of every space I design.'},
 {t:.88,eyebrow:'04 — ABOUT & CONTACT',title:"Let's make something good",text:'A little about me, how I work, and how to start a conversation. Contact details coming soon.'}
 ];
@@ -769,6 +875,54 @@ poles.frustumCulled=heads.frustumCulled=false;
 scene.add(poles,heads);
 }
 
+/* ---------- photo posts: a lamp post with small photos hanging from it ---------- */
+const posts=[];
+{
+const loader=new THREE.TextureLoader();
+const postMat=new THREE.MeshStandardMaterial({color:0x3b3229,roughness:.55,metalness:.35});
+const cordMat=new THREE.MeshBasicMaterial({color:0x2c2a26});
+const frameMat=new THREE.MeshStandardMaterial({color:0xf8f5ee,roughness:.9});
+const layout=[[-1.45,.25],[-.5,.62],[.5,.4],[1.45,.75]];
+stops.forEach((st,si)=>{
+const pr=st.project;
+if(!pr||pr.style!=='post')return;
+const sp=sideSpot(st.t,-1,3.3),tg=curve.getTangentAt(st.t);
+const pxv=(sp.px-sp.x)/3.3,pzv=(sp.pz-sp.z)/3.3;
+const g=new THREE.Group();
+g.position.set(sp.x,gy(sp.x,sp.z),sp.z);
+g.rotation.y=Math.atan2(-tg.x*.8+pxv*.6,-tg.z*.8+pzv*.6);
+scene.add(g);
+addMesh(g,new THREE.CylinderGeometry(.22,.27,.16,12),postMat,0,.08,0,0);
+addMesh(g,new THREE.CylinderGeometry(.06,.085,3.9,10),postMat,0,1.95,0,0);
+addMesh(g,new THREE.BoxGeometry(3.8,.06,.06),postMat,0,3.6,0,0);
+addMesh(g,new THREE.SphereGeometry(.17,12,10),lampMat,0,4.05,0,0);
+const photos=[];
+(pr.tiles||[]).slice(0,4).forEach((src,k)=>{
+const len=layout[k][1];
+const pg=new THREE.Group();
+pg.position.set(layout[k][0],3.57,0);
+g.add(pg);
+const cord=new THREE.Mesh(new THREE.CylinderGeometry(.004,.004,len,4),cordMat);
+cord.position.y=-len/2;
+pg.add(cord);
+const card=new THREE.Group();
+card.position.y=-len-.29;
+pg.add(card);
+const frame=new THREE.Mesh(new THREE.BoxGeometry(.78,.58,.03),frameMat);
+frame.castShadow=true;
+card.add(frame);
+const imgMat=new THREE.MeshBasicMaterial({color:0xdddddd,toneMapped:false});
+const pic=new THREE.Mesh(new THREE.PlaneGeometry(.7,.5),imgMat);
+pic.position.z=.017;
+card.add(pic);
+loader.load(src,tex=>{tex.colorSpace=THREE.SRGBColorSpace;imgMat.map=tex;imgMat.color.set(0xffffff);imgMat.needsUpdate=true;},undefined,()=>{});
+photos.push({pg,card,ph:k*1.7});
+});
+posts.push({stopIndex:si,photos});
+clear.push({x:sp.x,z:sp.z,r:2.4});
+});
+}
+
 /* ---------- trees ---------- */
 const barkMat=new THREE.MeshStandardMaterial({map:barkTexV||null,color:0xd8c3a6,roughness:1});
 const spots=[];
@@ -1098,6 +1252,7 @@ sun.position.copy(sun.target.position).addScaledVector(dir,70);
 sky.position.copy(camPos);
 for(const m of mtnList)m.position.set(camPos.x,0,camPos.z);
 clouds.rotation.y+=dt*.003;
+for(const p of posts)for(const o of p.photos){o.pg.rotation.z=Math.sin(time*1.1+o.ph)*.05;o.pg.rotation.x=Math.sin(time*.8+o.ph*1.3)*.03;}
 if(opts.petals!==false){
 const a=petals.geometry.attributes.position.array;
 for(let i=0;i<PN;i++){
@@ -1115,7 +1270,7 @@ petals.geometry.attributes.position.needsUpdate=true;
 }else petals.visible=false;
 }
 
-return {curve,length,update};
+return {curve,length,update,posts};
 }
 // </world>
 
@@ -1131,14 +1286,86 @@ let has3D=false,goTo=()=>{};
 function openIndex(){indexEl.classList.add('open');}
 function closeIndex(){indexEl.classList.remove('open');}
 
-const cardEls=STOPS.map(s=>{
+const projectEl=$('project'),projectBody=$('projectBody'),lightEl=$('lightbox');
+const mk=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;};
+
+function openLightbox(src,cap){
+lightEl.querySelector('img').src=src;
+lightEl.querySelector('img').alt=cap||'';
+lightEl.querySelector('p').textContent=cap||'';
+lightEl.classList.add('open');
+}
+lightEl.addEventListener('click',()=>lightEl.classList.remove('open'));
+
+function openProject(i){
+const s=STOPS[i],pr=s&&s.project;
+if(!pr)return;
+projectBody.textContent='';
+const hero=mk('div','pHero'+(pr.heroFit==='contain'?' contain':''));
+const hi=document.createElement('img');hi.src=pr.hero;hi.alt=s.title;
+if(pr.heroPos)hi.style.objectPosition=pr.heroPos;
+hero.appendChild(hi);
+const wrap=mk('div','pWrap');
+wrap.append(mk('div','eyebrow',s.eyebrow),mk('h1','',s.title));
+if(pr.meta){
+const m=mk('div','pMeta');
+pr.meta.forEach(x=>{const d=document.createElement('div');d.append(mk('b','',x[0]),document.createTextNode(x[1]));m.appendChild(d);});
+wrap.appendChild(m);
+}
+if(pr.lead)wrap.appendChild(mk('p','pLead',pr.lead));
+if(pr.sections){
+const cols=mk('div','pCols');
+pr.sections.forEach(sec=>{
+const d=document.createElement('div');
+d.appendChild(mk('h3','',sec.h));
+const ul=document.createElement('ul');
+sec.items.forEach(t=>ul.appendChild(mk('li','',t)));
+d.appendChild(ul);cols.appendChild(d);
+});
+wrap.appendChild(cols);
+}
+if(pr.gallery&&pr.gallery.length){
+wrap.appendChild(mk('h2','','The work'));
+const g=mk('div','pGallery');
+pr.gallery.forEach(it=>{
+const f=document.createElement('figure');
+const im=document.createElement('img');
+im.src=it.src;im.alt=it.cap;im.loading='lazy';im.decoding='async';
+im.addEventListener('click',()=>openLightbox(it.src,it.cap));
+f.append(im,mk('figcaption','',it.cap));
+g.appendChild(f);
+});
+wrap.appendChild(g);
+}
+projectBody.append(hero,wrap);
+projectEl.classList.add('open');
+projectEl.scrollTop=0;
+}
+function closeProject(){lightEl.classList.remove('open');projectEl.classList.remove('open');}
+const modalOpen=()=>indexEl.classList.contains('open')||projectEl.classList.contains('open');
+$('projectClose').addEventListener('click',closeProject);
+
+const showEl=$('showcase'),showEls=[];
+const cardEls=STOPS.map((s,i)=>{
 const c=document.createElement('article');
 c.className='card';
-const e=document.createElement('div');e.className='eyebrow';e.textContent=s.eyebrow;
-const h=document.createElement('h2');h.textContent=s.title;
-const p=document.createElement('p');p.textContent=s.text;
-c.append(e,h,p);
-cardsEl.appendChild(c);
+c.append(mk('div','eyebrow',s.eyebrow),mk('h2','',s.title),mk('p','',s.text));
+if(s.project){
+const root=mk('div','show');
+const tiles=(s.project.tiles||[]).slice(0,4).map((src,k)=>{
+const t=mk('div','tile t'+k),im=document.createElement('img');
+im.src=src;im.alt='';im.decoding='async';
+t.appendChild(im);root.appendChild(t);
+return t;
+});
+const ctr=mk('div','showCenter');
+const b=mk('button','viewBtn','VIEW PROJECT →');
+b.addEventListener('click',()=>openProject(i));
+ctr.append(mk('div','eyebrow',s.eyebrow),mk('h2','',s.title),b,mk('div','skip','or keep scrolling to continue'));
+root.appendChild(ctr);
+showEl.appendChild(root);
+showEls[i]={root,tiles,ctr};
+}else cardsEl.appendChild(c);
 return c;
 });
 
@@ -1151,26 +1378,24 @@ dotsEl.appendChild(b);
 return b;
 });
 
-STOPS.forEach(s=>{
+STOPS.forEach((s,i)=>{
 const el=document.createElement('button');
 const n=document.createElement('span');n.className='num';n.textContent=s.eyebrow;
 const t=document.createElement('span');t.className='name';t.textContent=s.title;
 const d=document.createElement('span');d.className='desc';d.textContent=s.text;
 el.append(n,t,d);
-el.addEventListener('click',()=>{if(!has3D)return;closeIndex();goTo(s.t);});
+el.addEventListener('click',()=>{if(has3D){closeIndex();goTo(s.t);}else if(s.project)openProject(i);});
 listEl.appendChild(el);
 });
 
 $('indexBtn').addEventListener('click',openIndex);
 $('indexClose').addEventListener('click',closeIndex);
-window.addEventListener('keydown',e=>{if(e.key==='Escape')closeIndex();});
+window.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(lightEl.classList.contains('open'))lightEl.classList.remove('open');else if(projectEl.classList.contains('open'))closeProject();else closeIndex();});
 
 function fallback(reason){
 if(reason)window.__err&&window.__err(reason);
 has3D=false;
 document.body.classList.add('no3d');
-// turn the cards back into a plain list
-listEl.querySelectorAll('button').forEach(b=>{const d=document.createElement('div');d.innerHTML=b.innerHTML;b.replaceWith(d);});
 openIndex();
 $('loader').classList.add('done');
 }
@@ -1217,7 +1442,8 @@ has3D=true;
 
 /* input */
 const WHEEL=.00009,DRAG=.0007,KEYSPEED=.02;
-canvas.addEventListener('wheel',e=>{
+window.addEventListener('wheel',e=>{
+if(modalOpen())return;
 e.preventDefault();
 if(e.ctrlKey)return;
 jump=null;
@@ -1249,7 +1475,7 @@ return 0;
 }
 /* ↑ / W walk forward, ↓ / S walk back */
 window.addEventListener('keydown',e=>{
-if(indexEl.classList.contains('open')||e.metaKey||e.ctrlKey||e.altKey)return;
+if(modalOpen()||e.metaKey||e.ctrlKey||e.altKey)return;
 const k=e.key;
 if(k==='ArrowUp'||k==='w'||k==='W'){keys.f=true;e.preventDefault();}
 else if(k==='ArrowDown'||k==='s'||k==='S'){keys.b=true;e.preventDefault();}
@@ -1280,6 +1506,10 @@ renderer.setSize(innerWidth,innerHeight,false);
 /* page overlays follow the walk */
 const introEl=$('intro'),hintEl=$('hint'),restartEl=$('restart'),barEl=$('progress');
 let lastActive=-2;
+const postFor=[];
+world.posts.forEach(p=>{postFor[p.stopIndex]=p;});
+const _v=new THREE.Vector3();
+const TILE_FX=[[-80,-40,-3],[80,-40,2.5],[-80,50,2],[80,50,-2.5]];
 function updateUI(){
 const ia=1-clamp((pos-.008)/.05,0,1);
 introEl.style.opacity=ia;
@@ -1292,10 +1522,53 @@ let nearest=-1,nd=9;
 STOPS.forEach((s,i)=>{
 const d=Math.abs(pos-s.t);
 const a=clamp(1-(d-.025)/.04,0,1);
+const sh=showEls[i],po=postFor[i];
+if(sh&&po){
+/* photos hanging on the lamp post fly in and grow into big tiles */
+sh.root.style.opacity=a>.01?1:0;
+sh.root.style.visibility=a>.01?'visible':'hidden';
+const fovT=Math.tan(camera.fov*Math.PI/360);
+sh.tiles.forEach((t,k)=>{
+const kk=clamp((a-k*.08)/.7,0,1),ek=smooth(kk),o=TILE_FX[k],ph=po.photos[k];
+let tx=0,ty=0,sc=1,op=clamp(kk*6,0,1);
+if(ph){
+ph.card.getWorldPosition(_v);
+const dist=camera.position.distanceTo(_v);
+_v.project(camera);
+if(_v.z>1){op=Math.min(op,clamp(a*3,0,1));}
+else if(ek<1){
+const cx=t.offsetLeft+t.offsetWidth/2,cy=t.offsetTop+t.offsetHeight/2;
+tx=((_v.x*.5+.5)*innerWidth-cx)*(1-ek);
+ty=((-_v.y*.5+.5)*innerHeight-cy)*(1-ek);
+const s0=clamp(.78*(innerHeight/(2*Math.max(dist,.5)*fovT))/Math.max(t.offsetWidth,1),.04,1);
+sc=s0+(1-s0)*ek;
+}
+ph.pg.visible=!(op>.02);
+}
+t.style.opacity=op.toFixed(3);
+t.style.transform='translate('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px) rotate('+(o[2]*ek).toFixed(2)+'deg) scale('+sc.toFixed(3)+')';
+});
+const co=clamp((a-.45)/.4,0,1);
+sh.ctr.style.opacity=co.toFixed(3);
+sh.ctr.style.visibility=co>.05?'visible':'hidden';
+sh.ctr.style.transform='translate(-50%,-50%) scale('+(.95+.05*co).toFixed(3)+')';
+}else if(sh){
+sh.root.style.opacity=a>.01?1:0;
+sh.root.style.visibility=a>.01?'visible':'hidden';
+sh.tiles.forEach((t,k)=>{
+const ak=smooth(clamp((a-k*.1)/.65,0,1)),o=TILE_FX[k];
+t.style.opacity=ak.toFixed(3);
+t.style.transform='translate('+(o[0]*(1-ak)).toFixed(1)+'px,'+(o[1]*(1-ak)).toFixed(1)+'px) rotate('+o[2]+'deg) scale('+(.9+.1*ak).toFixed(3)+')';
+});
+sh.ctr.style.opacity=a.toFixed(3);
+sh.ctr.style.visibility=a>.05?'visible':'hidden';
+sh.ctr.style.transform='translate(-50%,-50%) scale('+(.95+.05*a).toFixed(3)+')';
+}else{
 const c=cardEls[i];
 c.style.opacity=a.toFixed(3);
 c.style.visibility=a>.01?'visible':'hidden';
 c.style.transform='translateY('+((1-a)*16).toFixed(1)+'px)';
+}
 if(d<nd){nd=d;nearest=i;}
 });
 const act=nd<.05?nearest:-1;
@@ -1307,7 +1580,7 @@ let first=true;
 function frame(){
 requestAnimationFrame(frame);
 const dt=Math.min(clock.getDelta(),.05);
-if(indexEl.classList.contains('open')&&!first)return;
+if(modalOpen()&&!first)return;
 time+=dt;
 
 if(jump){
@@ -1337,6 +1610,7 @@ camera.position.set(P.x-T.z*sway,1.62+bob+Math.sin(time*.8)*.005,P.z+T.x*sway);
 camera.rotation.set(-.03+.12*smooth(lift),yawS+look.yaw,0,'YXZ');
 
 world.update(dt,time,pos,camera.position);
+camera.updateMatrixWorld();
 updateUI();
 renderer.render(scene,camera);
 
