@@ -136,6 +136,27 @@ body.no3d #indexNote{display:block}
 #dots button::after{display:none}
 }
 @media(prefers-reduced-motion:reduce){.cue i{animation:none}}
+
+.card.about{right:auto;width:min(560px,calc(100vw - 40px));padding:28px 30px 28px}
+.card.about h2{margin:12px 0 14px}
+.card.about p{margin:0 0 .75em;font-size:14.5px;line-height:1.65}
+.card.about p.closing{font:italic 500 21px/1.3 var(--serif);color:var(--ink);margin:.9em 0 0}
+.card.fact h2{font-size:clamp(26px,3.4vw,34px)}
+.card.fact p{font-size:16.5px;line-height:1.65;color:#2f4034}
+#intro{top:10vh}
+#intro h1{font-size:clamp(40px,5.6vw,72px);margin:12px 0 14px}
+#intro p{font-size:clamp(14px,1.45vw,16.5px);max-width:540px;margin:0 auto .65em;line-height:1.55}
+#intro p.closing{font:italic 600 clamp(18px,1.9vw,22px)/1.3 var(--serif);margin:.9em auto 0}
+#intro .cue{margin-top:16px}
+#intro .cue i{height:28px;margin-top:8px}
+#intro .introHead{display:flex;align-items:center;justify-content:center;gap:22px;margin:12px 0 14px}
+#intro .introHead h1{margin:0}
+#introPhoto{flex:none;width:clamp(72px,8vw,104px);height:clamp(72px,8vw,104px);border-radius:50%;object-fit:cover;object-position:50% 30%;border:3px solid #fff;box-shadow:0 6px 22px #1c2c2050}
+#aboutIdx{margin:48px 0 0;max-width:680px}
+#aboutIdx h2{font:400 clamp(34px,5vw,54px)/1 var(--serif);margin:10px 0 16px}
+#aboutIdx p{font-size:16px;line-height:1.7;color:#4c5d50;margin:0 0 .8em}
+#aboutIdx ul{padding-left:20px;margin:18px 0 0;line-height:1.7;color:#3e4f43}
+@media(max-width:700px){#intro{top:8vh}#intro::before{inset:-26px -14px}#intro p{font-size:13.5px;line-height:1.5}.card.about{padding:18px 18px 18px}.card.about p{font-size:13.5px;line-height:1.55;margin-bottom:.55em}.card.about p.closing{font-size:18px}}
 </style>
 </head>
 <body>
@@ -197,7 +218,7 @@ window.addEventListener('unhandledrejection',function(e){window.__err('Error: '+
    (keep scrolling to skip past it). Add style:'post' to a project and its
    photos hang from a lamp post in the park, then fly in to the screen. */
 const STOPS=[
-{t:.14,place:'playground',sign:'THE PLAYGROUND',eyebrow:'01 — LIVE/WORK PLAN',title:'A home with a studio built in',
+{t:.151,place:'playground',sign:'THE PLAYGROUND',eyebrow:'01 — LIVE/WORK PLAN',title:'A home with a studio built in',
 text:'Space planning for a pottery artist who lives and works at home: bubble diagrams, furniture planning and the final furniture plan.',
 project:{
 tiles:['images/tile-plan-furniture-plan.jpg','images/tile-plan-bubble-v2.jpg','images/tile-plan-furniture-planning.jpg','images/tile-plan-bubble-v1.jpg'],
@@ -215,7 +236,7 @@ gallery:[
 {src:'images/plan-bubble-v2.jpg',cap:'Bubble diagram, version 2'},
 {src:'images/plan-bubble-v1.jpg',cap:'Bubble diagram, version 1'}
 ]}},
-{t:.38,place:'lake',sign:'THE LAKE',eyebrow:'02 — LIVE-WORK CONDO',title:'Leaves & Layers: a biophilic live-work condo',
+{t:.394,place:'lake',sign:'THE LAKE',eyebrow:'02 — LIVE-WORK CONDO',title:'Leaves & Layers: a biophilic live-work condo',
 text:'The final design for the pottery artist’s condo: a living plant wall, arched shelving for her work, and a studio full of daylight.',
 project:{
 style:'post',
@@ -244,11 +265,43 @@ gallery:[
 {src:'images/condo-lighting-plan.jpg',cap:'Lighting plan'},
 {src:'images/condo-sustainability.jpg',cap:'Designing with sustainability'}
 ]}},
-{t:.63,place:'fountain',sign:'FOUNTAIN GARDEN',eyebrow:'03 — PHILOSOPHY',title:'Biophilic by instinct',text:'Why natural light, texture and greenery sit at the heart of every space I design.'},
-{t:.955,place:'gazebo',sign:'THE PAVILION',eyebrow:'04 — ABOUT & CONTACT',title:"Let's make something good",text:'A little about me, how I work, and how to start a conversation. Contact details coming soon.'}
+{t:.637,place:'fountain',sign:'FOUNTAIN GARDEN',eyebrow:'03 — PHILOSOPHY',title:'Biophilic by instinct',text:'Why natural light, texture and greenery sit at the heart of every space I design.'},
+{t:.961,place:'gazebo',sign:'THE PAVILION',eyebrow:'04 — ABOUT & CONTACT',title:"Let's make something good",text:'A little about me, how I work, and how to start a conversation. Contact details coming soon.'}
+];
+
+/* ---------- ABOUT ME: the intro on the landing page, then one plaque per fun fact along the path ----------
+   ABOUT.photo: put a file name here later (for example 'images/manjot.jpg') and a round photo appears above the greeting.
+   t = how far along the path; side: -1 = left of the path, 1 = right. Edit the words freely. */
+const ABOUT={photo:'images/manjot.jpg',title:'Hi, I am Manjot.',
+paras:[
+'I am an interior design student with a curiosity for how spaces shape the way we live, feel and connect. I believe the most meaningful spaces are the ones that tell a story and reflect the people who inhabit them.',
+'This is where I share my ideas, explorations and growing journey in interior design.'
+],
+closing:'There is a little something around every corner. Come explore.'};
+const FACTS=[
+{t:.232,side:1,title:'Chai & Bollywood',text:'I can never say no to a good cup of chai and a Bollywood movie.'},
+{t:.313,side:-1,title:'Plant collector',text:'I have a growing collection of plants because somehow I always find room for just one more.'},
+{t:.475,side:1,title:'Family & food',text:'I love spending time with family and making memories over good food.'},
+{t:.556,side:-1,title:'Game night',text:'I enjoy playing board games and have a slightly competitive side.'},
+{t:.718,side:1,title:'Hands-on maker',text:'I love trying new creative activities, from pottery to anything that lets me get hands-on and experiment.'},
+{t:.799,side:-1,title:'From IT to interiors',text:'I spent almost eight years working in IT support before making the switch to interior design, bringing my problem-solving skills along for the journey.'},
+{t:.880,side:1,title:'Home tells a story',text:'I believe a home should tell the story of the people living in it and reflect their personalities.'}
 ];
 
 /* ========================================================== */
+
+/* fill the landing page intro from ABOUT */
+{
+const it=document.getElementById('intro');
+const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n;};
+it.textContent='';
+const head=el('div','introHead');head.appendChild(el('h1','',ABOUT.title));
+if(ABOUT.photo){const ph=el('img');ph.id='introPhoto';ph.alt='Manjot';ph.src=ABOUT.photo;ph.onerror=()=>ph.remove();head.appendChild(ph);}
+it.append(el('div','eyebrow','AN INTERIOR DESIGN PORTFOLIO'),head);
+ABOUT.paras.forEach(p=>it.appendChild(el('p','',p)));
+it.appendChild(el('p','closing',ABOUT.closing));
+const cue=el('div','cue','SCROLL TO WALK');cue.appendChild(document.createElement('i'));it.appendChild(cue);
+}
 
 // <world>
 function mulberry32(a){return function(){var t=a+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296;};}
@@ -1385,6 +1438,28 @@ signPost(sx,sz,Math.atan2(vx,vz),'PROJECT 0'+(d.i+1),st.sign||NAMES[d.type]);
 clear.push({x:sx,z:sz,r:1.6});
 });
 
+/* ---------- the welcome board and the fun-fact plaques ---------- */
+const plaqueFocus=[];
+function plaque(t,side,top,main,big,off,hold,fade){
+const sp=sideSpot(Math.min(.995,t+.006),side,big?4.7:4.0),P=curve.getPointAt(t);
+const g=new THREE.Group();
+g.position.set(sp.x,gy(sp.x,sp.z),sp.z);
+g.rotation.y=Math.atan2(P.x-sp.x,P.z-sp.z);
+scene.add(g);
+const w=big?2.6:1.9,h=w/2,hg=big?1.2:.95;
+for(const s of [-1,1])box(g,.1,hg+.3,.1,M.timberDk,s*(w/2-.12),(hg+.3)/2,-.06);
+const face=new THREE.MeshStandardMaterial({map:makeSign(top,main),roughness:.7});
+const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,.07),[M.timberDk,M.timberDk,M.timberDk,M.timberDk,face,M.timberDk]);
+m.position.set(0,hg+.12,0);m.rotation.x=-.25;m.castShadow=true;g.add(m);
+box(g,w+.14,.06,.12,M.timberDk,0,hg+.12+h/2+.03,0,0,-.25);
+patch(sp.x,sp.z,1.3,9,pick(PINKS),pick(PINKS),.6);
+addCrown(sp.x+Math.cos(g.rotation.y)*1.5,.3,sp.z-Math.sin(g.rotation.y)*1.5,.55,.3,.55,lowPower?6:10,.4,pick(BUSH),.6);
+clear.push({x:sp.x,z:sp.z,r:2.6});
+plaqueFocus.push({t,x:sp.x,y:hg+.12,z:sp.z,off,hold,fade});
+}
+(opts.facts||[]).forEach((f,i)=>plaque(f.t,f.side,'FUN FACT '+(i+1)+' OF '+opts.facts.length,f.title.toUpperCase(),false,.12,.014,.03));
+plaqueFocus.forEach(f=>focus.push(f));
+
 /* rocks, drawn as one batch */
 if(rockList.length){
 const rm=new THREE.InstancedMesh(rockGeo,new THREE.MeshStandardMaterial({roughness:.95}),rockList.length);
@@ -1987,6 +2062,26 @@ showEls[i]={root,tiles,ctr};
 return c;
 });
 
+const extraEls=[];
+function addExtra(cls,eyebrow,title,paras,t,hold,fade){
+const c=document.createElement('article');
+c.className='card '+cls;
+c.append(mk('div','eyebrow',eyebrow),mk('h2','',title));
+paras.forEach(p=>c.appendChild(typeof p==='string'?mk('p','',p):mk('p',p.cls,p.text)));
+cardsEl.appendChild(c);
+extraEls.push({el:c,t,hold,fade});
+}
+FACTS.forEach((f,i)=>addExtra('fact','FUN FACT '+(i+1)+' OF '+FACTS.length,f.title,[f.text],f.t,.014,.03));
+{
+const ai=document.createElement('div');ai.id='aboutIdx';
+ai.append(mk('div','eyebrow','ABOUT ME'),mk('h2','',ABOUT.title));
+ABOUT.paras.forEach(p=>ai.appendChild(mk('p','',p)));
+ai.appendChild(mk('p','',ABOUT.closing));
+const ul=document.createElement('ul');FACTS.forEach(f=>ul.appendChild(mk('li','',f.text)));
+ai.appendChild(ul);
+indexEl.appendChild(ai);
+}
+
 const dotEls=STOPS.map((s,i)=>{
 const b=document.createElement('button');
 b.setAttribute('aria-label','Go to '+s.title);
@@ -2040,7 +2135,7 @@ const setFov=()=>{camera.fov=innerWidth/innerHeight<1?72:60;};
 setFov();
 
 const aniso=renderer.capabilities&&renderer.capabilities.getMaxAnisotropy?renderer.capabilities.getMaxAnisotropy():1;
-const world=buildWorld(THREE,scene,{lowPower:coarse,shadows:renderer.shadowMap.enabled,stops:STOPS,petals:!reduce,anisotropy:aniso,renderer});
+const world=buildWorld(THREE,scene,{lowPower:coarse,shadows:renderer.shadowMap.enabled,stops:STOPS,petals:!reduce,anisotropy:aniso,renderer,facts:FACTS,about:ABOUT});
 const L=world.length;
 
 /* state */
@@ -2049,6 +2144,12 @@ let jump=null,dragging=false,lastX=0,lastY=0,dirKey=0;
 const look={yaw:0};
 const keys={};
 
+const MAGN=[...STOPS.map(s=>s.t),...FACTS.map(f=>f.t)];
+function slowF(){
+let d=9;
+for(const t of MAGN)d=Math.min(d,Math.abs(pos-t));
+return .4+.6*smooth(clamp((d-.004)/.022,0,1));
+}
 function startJump(t){
 t=clamp(t,0,1);
 const d=Math.abs(t-pos);
@@ -2066,7 +2167,7 @@ e.preventDefault();
 if(e.ctrlKey)return;
 jump=null;
 const dy=e.deltaMode===1?e.deltaY*33:e.deltaY;
-target=clamp(target+dy*WHEEL,0,1);
+target=clamp(target+dy*WHEEL*slowF(),0,1);
 },{passive:false});
 
 canvas.addEventListener('pointerdown',e=>{
@@ -2081,12 +2182,12 @@ canvas.addEventListener('pointermove',e=>{
 if(!dragging)return;
 const dx=e.clientX-lastX,dy=e.clientY-lastY;
 lastX=e.clientX;lastY=e.clientY;
-target=clamp(target-dy*DRAG,0,1);
+target=clamp(target-dy*DRAG*slowF(),0,1);
 look.yaw=clamp(look.yaw-dx*.0035,-1.1,1.1);
 });
 
 function nextStop(dir){
-const eps=.012,ts=STOPS.map(s=>s.t).sort((a,b)=>a-b);
+const eps=.012,ts=MAGN.slice().sort((a,b)=>a-b);
 if(dir>0){for(const t of ts)if(t>target+eps)return t;return 1;}
 for(let i=ts.length-1;i>=0;i--)if(ts[i]<target-eps)return ts[i];
 return 0;
@@ -2139,7 +2240,7 @@ barEl.style.transform='scaleX('+pos.toFixed(4)+')';
 let nearest=-1,nd=9;
 STOPS.forEach((s,i)=>{
 const d=Math.abs(pos-s.t);
-const a=clamp(1-(d-.025)/.04,0,1);
+const a=clamp(1-(d-.02)/.03,0,1);
 const sh=showEls[i],po=postFor[i];
 if(sh&&po){
 /* photos hanging on the lamp post fly in and grow into big tiles */
@@ -2189,7 +2290,13 @@ c.style.transform='translateY('+((1-a)*16).toFixed(1)+'px)';
 }
 if(d<nd){nd=d;nearest=i;}
 });
-const act=nd<.05?nearest:-1;
+for(const x of extraEls){
+const a=clamp(1-(Math.abs(pos-x.t)-x.hold)/x.fade,0,1);
+x.el.style.opacity=a.toFixed(3);
+x.el.style.visibility=a>.01?'visible':'hidden';
+x.el.style.transform='translateY('+((1-a)*16).toFixed(1)+'px)';
+}
+const act=nd<.04?nearest:-1;
 if(act!==lastActive){dotEls.forEach((b,i)=>b.classList.toggle('active',i===act));lastActive=act;}
 }
 
@@ -2208,7 +2315,7 @@ pos=jump.from+(jump.to-jump.from)*k;
 target=pos;
 if(jump.e>=jump.dur)jump=null;
 }else{
-if(dirKey)target=clamp(target+dirKey*dt*KEYSPEED,0,1);
+if(dirKey)target=clamp(target+dirKey*dt*KEYSPEED*slowF(),0,1);
 pos+=(target-pos)*(1-Math.exp(-dt*(reduce?9:3.4)));
 }
 
@@ -2219,12 +2326,23 @@ if(!dragging)look.yaw*=Math.exp(-dt*2.2);
 
 const P=world.curve.getPointAt(pos),T=world.curve.getTangentAt(pos);
 let yawT=Math.atan2(-T.x,-T.z),pitchF=0;
-let fw=0,fi=null;
-for(const f of world.focus){if(!f)continue;const w=smooth(clamp(1-(Math.abs(pos-f.t)-.014)/.075,0,1));if(w>fw){fw=w;fi=f;}}
-if(fi&&fw>0){
-const yf=Math.atan2(-(fi.x-P.x),-(fi.z-P.z));
-yawT=angleLerp(yawT,yf,fw*.92);
-pitchF=Math.atan2(fi.y-1.62,Math.hypot(fi.x-P.x,fi.z-P.z))*fw*.6;
+{
+let wsum=0,dacc=0,pacc=0;
+const dA=(x,y)=>((y-x+Math.PI)%(Math.PI*2)+Math.PI*2)%(Math.PI*2)-Math.PI;
+for(const f of world.focus){
+if(!f)continue;
+const w=smooth(clamp(1-(Math.abs(pos-f.t)-(f.hold!==undefined?f.hold:.014))/(f.fade!==undefined?f.fade:.05),0,1));
+if(w<=0)continue;
+const yf=Math.atan2(-(f.x-P.x),-(f.z-P.z))+(f.off||0)*Math.min(1,camera.aspect*.7);
+dacc+=w*dA(yawT,yf);
+pacc+=w*Math.atan2(f.y-1.62,Math.hypot(f.x-P.x,f.z-P.z));
+wsum+=w;
+}
+if(wsum>0){
+const k=Math.min(1,wsum);
+yawT+=dacc/wsum*k*.94;
+pitchF=pacc/wsum*k*.6;
+}
 }
 yawS=yawS===null?yawT:angleLerp(yawS,yawT,1-Math.exp(-dt*5));
 
